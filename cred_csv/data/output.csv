@@ -1,6 +1,6 @@
 Type,Record Identifier,Field,Source Value,Target Value
 Missing in Source,3,,,
 Missing in Target,3,,,
+Field Discrepancy,2,Date,2023-01-02,2023-01-04
 Field Discrepancy,1,Amount,100.0,100.00
 Field Discrepancy,2,Amount,200.5,200.50
-Field Discrepancy,2,Date,2023-01-02,2023-01-04

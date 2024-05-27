@@ -3,11 +3,10 @@
 ### This is cli application that read in two CSV files, reconciles the records, and produce a report detailing the differences between the two.
 
 ## Requirements
-The following are the app requirements:
+The following are the cli requirements:
 - Python 3.12
 
 ## Running the cli
-
 1. Install required packages
     `pip install -r requirements.txt`
 
@@ -16,9 +15,13 @@ Run the following to run a reconciliation
 ```shell
 python cred_csv/reconciler.py -s path/to/source.csv -t path/to/target.csv -o path/to/output.csv -c columns/to/compare
 ```
-`python cred_csv/reconciler.py -s path/to/source.csv -t path/to/target.csv -o path/to/output.csv -c columns/to/compare`
-
-
+## Test
+```shell
+    make test
+```
+```shell
+python -m unittest
+```
 ### Suggestions
 
 Loading csv file is fundamentally alot of work, which includes:

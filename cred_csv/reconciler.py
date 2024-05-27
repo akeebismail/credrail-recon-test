@@ -27,6 +27,7 @@ def main():
     logging.info("-----> Starting reconciliation...")
     records_not_in_target = recon.get_missing_records(target_df, source_df, name='Target')
     records_not_in_source = recon.get_missing_records(source_df, target_df)
+    print('missing in target',records_not_in_target)
     columns = recon.get_all_columns()
 
     if args.columns is not None:
