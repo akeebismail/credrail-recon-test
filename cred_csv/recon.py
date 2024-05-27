@@ -27,7 +27,7 @@ class Recon:
         '''
         Import CSV file
         Parameters:
-            path (str): path to the CSV file
+            path (str): path/to/the/file.csv
 
         Returns:
             pd.DataFrame: dataframe from the CSV file
@@ -42,12 +42,16 @@ class Recon:
 
         except FileNotFoundError:
             logging.error(f"File not found at {path}. Please check the path and try again.")
+            exit(1)
         except pd.errors.ParserError as e:
             logging.error(f"Error parsing csv file. Details: {e}")
+            exit(1)
         except pd.errors.EmptyDataError as e:
             logging.error(f"Empty csv file.")
+            exit(1)
         except Exception as e:
             logging.error(f"An unexpected error occurred. Details: {e}")
+            exit(1)
 
     def get_missing_records(self, source: pd.DataFrame, target: pd.DataFrame, name='Source') -> pd.DataFrame:
         missing = self.source[
