@@ -6,7 +6,8 @@ class TestRecon(unittest.TestCase):
     def setUp(self):
 
         path = os.path.dirname(__file__)
-        self.recon = Recon(f"{path}/data/source.csv", f"{path}/data/source.csv", 'data/output.csv')
+        self.recon = Recon(f"{path}/data/source.csv", f"{path}/data/source.csv",)
+        self.path = path
 
     def test_load_csv(self):
         self.assertIsInstance(self.recon.get_source_df(), pd.DataFrame)
@@ -25,9 +26,12 @@ class TestRecon(unittest.TestCase):
 
         column_differences = self.recon.compare_columns(['Name', 'Date'])
         self.assertEqual(column_differences.shape[0], 0)
+        self.assertEqual(3,column_differences.shape[0])
+        self.assertTrue(os.path.exists(f"{self.path}/data/output.csv"))
     def tearDown(self):
-        if os.path.exists("data/source.csv"):
-            os.remove("data/source.csv")
+
+        if os.path.exists(f"{self.path}/data/output.csv"):
+            os.remove(f"{self.path}/data/output.csv")
 
 if __name__ == '__main__':
     unittest.main()
