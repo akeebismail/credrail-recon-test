@@ -5,10 +5,9 @@ import time
 
 
 class Recon:
-    def __init__(self, source_path, target_path, output_path):
+    def __init__(self, source_path, target_path):
         self.source_path = source_path
         self.target_path = target_path
-        self.output_path = output_path
 
         start = time.time()
         self.source = self.load_csv(path=source_path)
@@ -50,11 +49,11 @@ class Recon:
         except Exception as e:
             logging.error(f"An unexpected error occurred. Details: {e}")
 
-    def get_missing_records(self, source: pd.DataFrame, target: pd.DataFrame) -> pd.DataFrame:
+    def get_missing_records(self, source: pd.DataFrame, target: pd.DataFrame, name='Source') -> pd.DataFrame:
         missing = self.source[
             ~self.source[source.columns[0]].isin(self.target[target.columns[0]])].dropna()
         return pd.DataFrame({
-            "Type": "Missing in Target",
+            "Type": f"Missing in {name}",
             "Record Identifier": missing[source.columns[0]]
         })
 

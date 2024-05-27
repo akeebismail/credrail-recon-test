@@ -13,6 +13,9 @@ The following are the app requirements:
 
 ### Running app in cli
 Run the following to run a reconciliation
+```shell
+python cred_csv/reconciler.py -s path/to/source.csv -t path/to/target.csv -o path/to/output.csv -c columns/to/compare
+```
 `python cred_csv/reconciler.py -s path/to/source.csv -t path/to/target.csv -o path/to/output.csv -c columns/to/compare`
 
 
